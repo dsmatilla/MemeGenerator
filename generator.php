@@ -128,6 +128,13 @@ class MemeGenerator{
 	
 	private function PlaceTextOnImage($img,$fontsize,$Xlocation,$Textheight,$font,$text)
 	{
+		// Add black border
+		$black = imagecolorallocate($this->im, 0, 0, 0);
+        	$px = 2;
+	        for ($c1 = ($Xlocation - abs($px)); $c1 <= ($Xlocation + abs($px)); $c1++)
+        	    for ($c2 = ($Textheight - abs($px)); $c2 <= ($Textheight + abs($px)); $c2++)
+                	imagettftext($this->im, $fontsize, 0, $c1, $c2, $black, $font, $text);
+		
 		imagettftext($this->im,$fontsize,0,$Xlocation,$Textheight, (int)$this->background, $font, $text);		
 	}
 	
